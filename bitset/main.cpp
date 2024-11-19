@@ -2,8 +2,9 @@
 #include <iostream>
 
 int main() {
-  bitset bset(128);
-  std::cout << bset.get(33) << "\n";
-  bset.flip(33);
-  std::cout << bset.get(33) << "\n";
+  bitset bset(125);
+  std::cout << bset.get(124) << "\n";
+  bset.flip(124);
+  std::cout << bset.get(124) << "\n";
+  std::cout << bset.get(128) << "\n";
 }

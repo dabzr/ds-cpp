@@ -3,7 +3,7 @@
 
 bitset::bitset(size_t size) : bitsize(size) {
   bitcount = sizeof(uint32_t) * 8;
-  arrsize = bitsize / bitcount;
+  arrsize = bitsize / bitcount + 1;
   arr = new uint32_t[size]();
 }
 
@@ -13,14 +13,14 @@ bitset::~bitset() {
 
 bool bitset::get(size_t index) {
   const size_t arr_index = index / bitcount;
-  if (arr_index >= arrsize) throw std::out_of_range("Index is out of range");
+  if (index >= bitsize) throw std::out_of_range("Index is out of range");
   const size_t bit_index = index - arr_index * bitcount - 1;
   return (arr[arr_index] >> bit_index) & 1;
 }
 
 void bitset::flip(size_t index) {
   size_t arr_index = index / bitcount;
-  if (arr_index > arrsize) throw std::out_of_range("Index is out of range");
+  if (index >= bitsize) throw std::out_of_range("Index is out of range");
   size_t bit_index = index - arr_index * bitcount - 1;
   arr[arr_index] ^= (1 << bit_index); 
 }
