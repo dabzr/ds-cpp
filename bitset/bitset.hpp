@@ -5,7 +5,7 @@ class bitset {
   private:
     size_t arrsize;
     size_t bitsize;
-    uint32_t *arr;
+    uint8_t *arr;
     size_t bitcount;
   public:
     bitset(size_t size);
