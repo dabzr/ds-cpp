@@ -1,10 +1,10 @@
 #include "bitset.hpp"
 #include <stdexcept>
 
-bitset::bitset(size_t size) : arrsize(size) {
-  arr = new uint32_t[size]();
+bitset::bitset(size_t size) : bitsize(size) {
   bitcount = sizeof(uint32_t) * 8;
-  bitsize = size * bitcount; 
+  arrsize = bitsize / bitcount;
+  arr = new uint32_t[size]();
 }
 
 bitset::~bitset() {
