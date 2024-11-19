@@ -3,7 +3,7 @@
 
 bitset::bitset(size_t size) : bitsize(size) {
   bitcount = sizeof(uint32_t) * 8;
-  arrsize = bitsize / bitcount + 1;
+  arrsize = bitsize / bitcount + (bitsize%bitcount != 0);
   arr = new uint32_t[size]();
 }
 
