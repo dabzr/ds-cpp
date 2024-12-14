@@ -1,4 +1,26 @@
-#include "stack.hpp"
+#include <stdlib.h>
+#include <stdexcept>
+
+template<typename T>
+class dynamic_stack {
+  private:
+    size_t size;
+    size_t capacity;
+    T* arr;
+    void resize(size_t newsize); 
+    bool is_full() const;
+  public:
+    dynamic_stack();
+    ~dynamic_stack();
+    T pop();
+    void push(T value);
+    T peek() const;
+    size_t len() const;
+    bool is_empty() const;
+    void clear();
+    bool contains(T value);
+    T get(size_t index) const;
+};
 
 template<typename T>
 dynamic_stack<T>::dynamic_stack() : size(0), capacity(3) { arr = new T[capacity]; }
@@ -57,5 +79,3 @@ void dynamic_stack<T>::resize(size_t newsize) {
   free(arr2);
 }
 
-template class dynamic_stack<int>;
-template class dynamic_stack<float>;

@@ -1,4 +1,5 @@
-#include "stack.hpp"
+#include "static_stack.hpp"
+#include "dynamic_stack.hpp"
 #include <iostream>
 
 int main() {

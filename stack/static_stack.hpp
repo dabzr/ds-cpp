@@ -1,4 +1,28 @@
-#include "stack.hpp"
+#pragma once
+#include <stdlib.h>
+#include <stdexcept>
+
+template<typename T>
+class static_stack {
+  private:
+    size_t size = 0;
+    const size_t capacity;
+    T* arr;
+
+  public:
+    static_stack(size_t size);
+    ~static_stack();
+    T pop();
+    void push(T value);
+    T peek() const;
+    size_t len() const;
+    size_t max_len() const;
+    bool is_empty() const;
+    bool is_full() const;
+    void clear();
+    bool contains(T value);
+    T get(size_t index) const;
+};
 
 template<typename T>
 static_stack<T>::static_stack(size_t capacity) : size(0), capacity(capacity) { arr = new T[capacity]; }
@@ -44,5 +68,4 @@ bool static_stack<T>::contains(T value) {
 template<typename T>
 T static_stack<T>::get(size_t index) const{ return arr[index]; }
 
-template class static_stack<int>;
-template class static_stack<float>;
+
