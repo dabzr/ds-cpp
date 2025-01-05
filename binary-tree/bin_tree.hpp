@@ -12,7 +12,6 @@ class bin_tree
     void print();
     node<T>* leftmost();
     node<T>* rightmost();
-    node<T>* next();
   private:
     node<T>* root = nullptr;
     uint32_t node_quantity = 0;
@@ -40,14 +39,16 @@ void bin_tree<T>::insert(T value)
     
     if (!nd->lhs)
     {
-      nd->add_left(value);
+      nd->lhs = new node<T>;
+      nd->lhs->value = value;
       node_quantity++;
       return;
     }
 
     if (!nd->rhs)
     {
-      nd->add_right(value);
+      nd->rhs = new node<T>;
+      nd->rhs->value = value;
       node_quantity++;
       return;
     }
@@ -69,4 +70,16 @@ node<T>* bin_tree<T>::leftmost()
   }
   return temp;
 } 
+template<typename T>
+node<T>* bin_tree<T>::rightmost()
+{
+  node<T>* nd = root->rhs;
+  node<T>* temp = nd;
+  while (nd)
+  {
+    temp = nd;
+    nd = nd->rhs;
+  }
+  return temp;
+}
 
